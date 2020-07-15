@@ -1,10 +1,11 @@
 import React from "react";
-import Logo from "../assets/ajax-loader.gif";
+import Logo from "../assets/loading.svg";
+import "./Await.css";
 
 const Await = () => {
   return (
     <>
-      <img src={Logo} alt="Loading" />
+      <img className="loading-icon" src={Logo} alt="Loading" width="36px" />
     </>
   );
 };
