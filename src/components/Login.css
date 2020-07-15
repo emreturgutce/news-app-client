@@ -1,0 +1,144 @@
+.container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: rgba(70, 205, 207, .15);
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-container {
+    height: 556px;
+    width: 429px;
+}
+
+form {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.form-row img {
+    margin: auto;
+}
+
+.disable {
+    display: none;
+}
+
+.error-box {
+    width: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f03;
+    padding: .8rem 1rem;
+    border-radius: 20px;
+    color: #eee;
+    font-size: 12px;
+}
+
+.close-icon {
+    color: #000;
+    cursor: pointer;
+}
+
+.close-icon:hover {
+    color: #eee;
+    opacity: .80;
+}
+
+.input-container {
+    position: relative;
+    width: 315px;
+    height: 60px;
+    border-radius: 30px;
+    border: 1px solid #707070;
+    background-color: #fff;
+    padding: .7rem .5rem;
+    overflow: hidden;
+}
+
+.icon {
+    position: absolute;
+    z-index: 1;
+    color: #333;
+}
+
+.icon-user {
+    font-size: 20px;
+    top: 9px;
+    left: 24px;
+}
+
+.icon-envelope {
+    font-size: 18px;
+    left: 23px;
+    top: 12px;
+}
+
+.icon-lock {
+    font-size: 18px;
+    left: 24px;
+    top: 11px;
+}
+
+.input-inner-container {
+    position: relative;
+    width: 75%;
+    height: 100%;
+    left: 61px;
+}
+
+.input-inner-container input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #111;
+}
+
+.input-inner-container input::placeholder {
+    color: #ccc;
+}
+
+.form-row button {
+    width: 315px;
+    height: 60px;
+    outline: none;
+    border: none;
+    font-size: 20px;
+    color: #48466D;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 30px;
+    background-color: rgb(171, 237, 216);
+    cursor: pointer;
+}
+
+.form-row button:hover {
+    opacity: .90;
+    transition: .25s;
+}
+
+.form-row p {
+    font-size: 14px;
+    color: #aaaaaa;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.form-row p:hover {
+    color: #48466D;
+    transition: .25s;
+}
+
+@media only screen and (max-width: 1200px) {
+    .bg-container {
+        display: none;
+    }
+}
