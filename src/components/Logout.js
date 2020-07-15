@@ -15,8 +15,8 @@ const Logout = () => {
         headers: { Authorization: `bearer ${token}` },
       });
       document.cookie = "token=";
-      logout();
       setIsLoggedIn(false);
+      logout();
     } catch (error) {}
   };
 
