@@ -9,6 +9,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import Await from "./components/Await";
 import Axios from "axios";
 import UserContext from "./context/UserContext";
+import FavoriteProvider from "./context/FavoriteProvider";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -53,7 +54,9 @@ const App = () => {
           <Switch>
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <PrivateRoute exatch path="/" component={Home} />
+            <FavoriteProvider>
+              <PrivateRoute exatch path="/" component={Home} />
+            </FavoriteProvider>
             <Route path="*" component={NotFound} />
           </Switch>
         </>
