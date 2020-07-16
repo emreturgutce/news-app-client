@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23" height="23" viewBox="0 0 23 23">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #707070;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #abedd8;
+      }
+
+      .cls-4 {
+        fill: #fafafa;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_21" data-name="Rectangle 21" class="cls-1" width="23" height="23" transform="translate(1238 48.403)"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_7" data-name="Mask Group 7" class="cls-2" transform="translate(-1238 -48.403)">
+    <g id="download" transform="translate(1238 48.403)">
+      <path id="Path_8" data-name="Path 8" class="cls-3" d="M10.845,0C4.855,0,0,5.149,0,11.5S4.855,23,10.845,23s10.845-5.149,10.845-11.5S16.831.007,10.845,0Z"/>
+      <path id="Path_9" data-name="Path 9" class="cls-4" d="M10.439,10.994c-1.045,0-4.109-1.33-4.788-.681a1.717,1.717,0,0,0,0,2.428l4.2,4.2a1.135,1.135,0,0,0,1.606,0l4.2-4.2a1.717,1.717,0,0,0,0-2.428C14.968,9.669,11.484,10.994,10.439,10.994Z" transform="translate(0.298 -0.921)"/>
+    </g>
+  </g>
+</svg>
