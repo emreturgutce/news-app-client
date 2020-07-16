@@ -9,7 +9,12 @@ const Logout = () => {
 
   const handleLogout = async () => {
     try {
-      const token = document.cookie.split("=")[1];
+      let token;
+      document.cookie.split("; ").forEach((cookie) => {
+        if (cookie.startsWith("token")) {
+          token = cookie.split("=")[1];
+        }
+      });
       if (!token) throw new Error();
       await Axios.get("http://localhost:5000/me/logout", {
         headers: { Authorization: `bearer ${token}` },
@@ -24,7 +29,12 @@ const Logout = () => {
     <>
       {isLoggedIn ? (
         <div>
-          <button onClick={() => handleLogout()}>Logout</button>
+          <button
+            style={{ width: "50px", height: "20px", display: "inlineBlock" }}
+            onClick={() => handleLogout()}
+          >
+            Logout
+          </button>
         </div>
       ) : (
         <Redirect to={{ pathname: "/login" }} />

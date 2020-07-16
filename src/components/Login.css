@@ -70,20 +70,20 @@ form {
 
 .icon-user {
     font-size: 20px;
-    top: 9px;
+    top: 14px;
     left: 24px;
 }
 
 .icon-envelope {
     font-size: 18px;
     left: 23px;
-    top: 12px;
+    top: 17px;
 }
 
 .icon-lock {
     font-size: 18px;
     left: 24px;
-    top: 11px;
+    top: 17px;
 }
 
 .input-inner-container {
@@ -104,7 +104,7 @@ form {
 }
 
 .input-inner-container input::placeholder {
-    color: #ccc;
+    color: #666;
 }
 
 .form-row button {
