@@ -3,6 +3,7 @@ import FavoriteContext from "../context/FavoriteContext";
 import Axios from "axios";
 import NewsCard from "./NewsCard";
 import "./NewsContainer.css";
+import { url } from "../url";
 
 const NewsContainer = () => {
   const { newsData, fetchFavorite } = useContext(FavoriteContext);
@@ -25,7 +26,7 @@ const NewsContainer = () => {
         }
       });
       if (!token) throw new Error();
-      const response = await Axios.get("http://localhost:5000/favorites/news", {
+      const response = await Axios.get(url + "/favorites/news", {
         headers: { Authorization: `bearer ${token}` },
       });
       if (response.status !== 200) throw new Error();

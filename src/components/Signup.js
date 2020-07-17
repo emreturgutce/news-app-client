@@ -6,6 +6,7 @@ import "./Login.css";
 import Background from "../assets/bg.svg";
 import Avatar from "../assets/user.svg";
 import Await from "./Await";
+import { url } from "../url";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -20,7 +21,7 @@ const Signup = () => {
   const submitForm = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.post("http://localhost:5000/signup", {
+      const response = await axios.post(url + "/signup", {
         username,
         email,
         password,

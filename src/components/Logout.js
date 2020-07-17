@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import Axios from "axios";
+import { url } from "../url";
 
 const Logout = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -16,7 +17,7 @@ const Logout = () => {
         }
       });
       if (!token) throw new Error();
-      await Axios.get("http://localhost:5000/me/logout", {
+      await Axios.get(url + "/me/logout", {
         headers: { Authorization: `bearer ${token}` },
       });
       document.cookie = "token=";

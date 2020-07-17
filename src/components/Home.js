@@ -6,6 +6,7 @@ import CurrencyTable from "./CurrencyTable";
 import NewsContainer from "./NewsContainer";
 import FavoriteContext from "../context/FavoriteContext";
 import Axios from "axios";
+import { url } from "../url";
 
 const Home = () => {
   const { favorites, addFavorite } = useContext(FavoriteContext);
@@ -37,8 +38,11 @@ const Home = () => {
         }
       });
       if (!token) throw new Error();
-      const response = await Axios.get("http://localhost:5000/favorites", {
-        headers: { Authorization: `bearer ${token}` },
+      const response = await Axios.get(url + "/favorites", {
+        headers: {
+          Authorization: `bearer ${token}`,
+          "Access-Control-Allow-Origin": "*",
+        },
       });
       const currencyStatus = response.data.data.favorites.currency;
       const newsStatus = response.data.data.favorites.news;

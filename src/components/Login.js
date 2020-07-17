@@ -6,6 +6,7 @@ import "./Login.css";
 import Background from "../assets/bg.svg";
 import Avatar from "../assets/user.svg";
 import Await from "./Await";
+import { url } from "../url";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ const Login = () => {
     if (isLoggedIn || isLoggedInState) return;
     try {
       setIsLoading(true);
-      const response = await axios.post("http://localhost:5000/login", {
+      const response = await axios.post(url + "/login", {
         email,
         password,
       });

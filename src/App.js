@@ -10,6 +10,7 @@ import Await from "./components/Await";
 import Axios from "axios";
 import UserContext from "./context/UserContext";
 import FavoriteProvider from "./context/FavoriteProvider";
+import { url } from "./url";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -24,8 +25,10 @@ const App = () => {
         }
       });
       if (!token) throw new Error();
-      const response = await Axios.get("http://localhost:5000/me", {
-        headers: { Authorization: `bearer ${token}` },
+      const response = await Axios.get(url + "/me", {
+        headers: {
+          Authorization: `bearer ${token}`,
+        },
       });
       const data = response.data;
       if (!data.success) throw new Error();

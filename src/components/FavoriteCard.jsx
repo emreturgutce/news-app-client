@@ -6,6 +6,7 @@ import NewsLogo from "../assets/news.svg";
 import PlusIcon from "../assets/plus.svg";
 import MinusIcon from "../assets/minus.svg";
 import "./FavoriteCard.css";
+import { url } from "../url";
 
 const FavoriteCard = ({ typeProp }) => {
   const [type, setType] = useState(typeProp);
@@ -33,7 +34,7 @@ const FavoriteCard = ({ typeProp }) => {
       if (!token) throw new Error();
       if (favoritesState[type]) {
         const response = await Axios.get(
-          `http://localhost:5000/favorites/${type.toLowerCase()}/deactivate`,
+          `${url}/favorites/${type.toLowerCase()}/deactivate`,
           {
             headers: { Authorization: `bearer ${token}` },
           }
@@ -43,7 +44,7 @@ const FavoriteCard = ({ typeProp }) => {
         removeFavorite(type.toLowerCase());
       } else {
         const response = await Axios.get(
-          `http://localhost:5000/favorites/${type.toLowerCase()}/activate`,
+          `${url}/favorites/${type.toLowerCase()}/activate`,
           {
             headers: { Authorization: `bearer ${token}` },
           }
