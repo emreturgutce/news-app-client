@@ -29,12 +29,12 @@ yarn start
 
 ###### Login Page
 
-![](https://github.com/emreturgutce/news-app-client/blob/master/sample-photos/login-page.jpg)
+![](https://github.com/emreturgutce/news-app-client/blob/master/sample-photos/login-page.JPG)
 
 ###### Signup Page
 
-![](https://github.com/emreturgutce/news-app-client/blob/master/sample-photos/signup-page.jpg)
+![](https://github.com/emreturgutce/news-app-client/blob/master/sample-photos/signup-page.JPG)
 
 ###### Home Page
 
-![](https://github.com/emreturgutce/news-app-client/blob/master/sample-photos/home-page.jpg)
+![](https://github.com/emreturgutce/news-app-client/blob/master/sample-photos/home-page.JPG)
