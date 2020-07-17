@@ -5,6 +5,10 @@
 This app created for those who want to learn foreign currency and latest news.
 Created using **React** and **Node.js**
 
+#### Live Demo
+
+You can try this app [here](http://favorite-news-app.surge.sh/)
+
 #### Rest Api Repository
 
 ```

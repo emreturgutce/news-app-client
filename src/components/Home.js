@@ -41,7 +41,6 @@ const Home = () => {
       const response = await Axios.get(url + "/favorites", {
         headers: {
           Authorization: `bearer ${token}`,
-          "Access-Control-Allow-Origin": "*",
         },
       });
       const currencyStatus = response.data.data.favorites.currency;
