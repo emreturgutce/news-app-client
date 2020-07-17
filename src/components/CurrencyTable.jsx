@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Axios from "axios";
 import FavoriteContext from "../context/FavoriteContext";
+import "./CurrencyTable.css";
 
 const CurrencyTable = () => {
   const { currencyData, fetchFavorite } = useContext(FavoriteContext);
@@ -33,21 +34,34 @@ const CurrencyTable = () => {
     } catch (error) {}
   };
 
+  const calculateCurrencyRate = (cur) => {
+    return Math.round((1 / cur) * 1000) / 1000;
+  };
+
   const renderCurrencyData = () => {
-    if (currencyData) {
+    if (currency) {
       return (
-        <div>
-          <p>USD: {currencyData.USD}</p>
-          <p>EUR: {currencyData.EUR}</p>
-          <p>GBP: {currencyData.GBP}</p>
-        </div>
+        <>
+          <div className="currency-column">
+            <h2>USD</h2>
+            <span>{calculateCurrencyRate(currencyData.USD)}</span>
+          </div>
+          <div className="currency-column">
+            <h2>EUR</h2>
+            <span>{calculateCurrencyRate(currencyData.EUR)}</span>
+          </div>
+          <div className="currency-column">
+            <h2>GBP</h2>
+            <span>{calculateCurrencyRate(currencyData.GBP)}</span>
+          </div>
+        </>
       );
     } else {
       return null;
     }
   };
 
-  return <div>{renderCurrencyData()}</div>;
+  return <div className="currency-table-container">{renderCurrencyData()}</div>;
 };
 
 export default CurrencyTable;

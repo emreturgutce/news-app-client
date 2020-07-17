@@ -1,9 +1,9 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useMemo } from "react";
 import Navbar from "./Navbar";
 import Container from "./Container";
-import FavoriteCard from "./FavoriteCard";
+import FavoriteContainer from "./FavoriteContainer";
 import CurrencyTable from "./CurrencyTable";
-import NewsCard from "./NewsCard";
+import NewsContainer from "./NewsContainer";
 import FavoriteContext from "../context/FavoriteContext";
 import Axios from "axios";
 
@@ -11,6 +11,10 @@ const Home = () => {
   const { favorites, addFavorite } = useContext(FavoriteContext);
   const [currencyState, setCurrencyState] = useState(favorites.currency);
   const [newsState, setNewsState] = useState(favorites.news);
+  const NavbarMemoized = useMemo(() => Navbar, []);
+  const CurrencyTableMemoized = useMemo(() => CurrencyTable, []);
+  const FavoriteContainerMemoized = useMemo(() => FavoriteContainer, []);
+  const NewsContainerMemoized = useMemo(() => NewsContainer, []);
 
   useEffect(() => {
     getFavoritesInfo();
@@ -51,13 +55,11 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
+      <NavbarMemoized />
       <Container>
-        Welcome to the ⚛ WORLD
-        <FavoriteCard typeProp="news" />
-        <FavoriteCard typeProp="currency" />
-        {currencyState ? <CurrencyTable /> : null}
-        {newsState ? <NewsCard /> : null}
+        <FavoriteContainerMemoized />
+        {currencyState ? <CurrencyTableMemoized /> : null}
+        {newsState ? <NewsContainerMemoized /> : null}
       </Container>
     </div>
   );

@@ -1,48 +1,33 @@
-import React, { useContext, useEffect, useState } from "react";
-import FavoriteContext from "../context/FavoriteContext";
-import Axios from "axios";
+import React from "react";
+import "./NewsCard.css";
 
-const NewsCard = () => {
-  const { newsData, fetchFavorite } = useContext(FavoriteContext);
-  const [news, setNews] = useState(newsData);
-
-  useEffect(() => {
-    setNews(newsData);
-  }, [newsData]);
-
-  useEffect(() => {
-    fetchNewsData();
-  }, []);
-
-  const fetchNewsData = async () => {
-    try {
-      let token;
-      document.cookie.split("; ").forEach((cookie) => {
-        if (cookie.startsWith("token")) {
-          token = cookie.split("=")[1];
-        }
-      });
-      if (!token) throw new Error();
-      const response = await Axios.get("http://localhost:5000/favorites/news", {
-        headers: { Authorization: `bearer ${token}` },
-      });
-      if (response.status !== 200) throw new Error();
-      const articles = response.data.data.articles;
-      fetchFavorite("newsData", { articles });
-    } catch (err) {}
-  };
-
-  const renderNews = () => {
-    if (news.articles) {
-      return news.articles.map((article) => {
-        return <p key={article.title}>{article.title}</p>;
-      });
-    } else {
-      return null;
-    }
-  };
-
-  return <div>{renderNews()}</div>;
+const NewsCard = ({ info }) => {
+  return (
+    <div className="news-card">
+      <div className="news-card-side">
+        <div className="news-card-title">
+          <h2>
+            <a href={info.url} target="_blank">
+              {info.title}
+            </a>
+          </h2>
+          <div className="news-card-sub-info">
+            <span>{info.source.name}</span>
+            <span>{info.publishedAt}</span>
+          </div>
+        </div>
+        <p className="news-card-content">{info.description}</p>
+      </div>
+      <div className="news-card-photo-side">
+        <img
+          src={info.urlToImage}
+          alt={info.title}
+          width="140px"
+          height="140px"
+        />
+      </div>
+    </div>
+  );
 };
 
 export default NewsCard;

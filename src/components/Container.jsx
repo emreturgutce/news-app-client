@@ -1,11 +1,10 @@
 import React from "react";
+import "./Container.css";
 
 const Container = ({ children }) => {
   return (
-    <div style={{ width: "100%", height: "100vh" }}>
-      <div style={{ paddingLeft: "180px", paddingRight: "180px" }}>
-        {children}
-      </div>
+    <div className="content-container">
+      <div className="inner-container">{children}</div>
     </div>
   );
 };

@@ -28,14 +28,22 @@ const Logout = () => {
   return (
     <>
       {isLoggedIn ? (
-        <div>
-          <button
-            style={{ width: "50px", height: "20px", display: "inlineBlock" }}
-            onClick={() => handleLogout()}
-          >
-            Logout
-          </button>
-        </div>
+        <button
+          style={{
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            border: 0,
+            outline: "none",
+            background: "none",
+            color: "#eee",
+            fontWeight: "bold",
+            cursor: "pointer",
+          }}
+          onClick={() => handleLogout()}
+        >
+          Logout
+        </button>
       ) : (
         <Redirect to={{ pathname: "/login" }} />
       )}

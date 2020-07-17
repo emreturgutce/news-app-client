@@ -1,0 +1,26 @@
+.content-container {
+    width: 100%;
+    height: 100vh;
+}
+
+.inner-container {
+    padding: 0 180px;
+}
+
+@media only screen and (max-width: 1200px) {
+    .inner-container {
+        padding: 0 60px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .inner-container {
+        padding: 0 20px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .inner-container {
+        padding: 0;
+    }
+}

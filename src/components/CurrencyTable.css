@@ -1,0 +1,26 @@
+.currency-table-container {
+    background-color: rgba(61, 154, 168, .5);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 120px;
+    box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.3);
+
+}
+
+.currency-column {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.currency-column h2 {
+    color: #48466D;
+    font-size: 16px;
+}
+
+.currency-column span {
+    color: #EEEEEE;
+    font-size: 24px;
+    font-weight: 700;
+}
