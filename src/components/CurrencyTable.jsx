@@ -25,7 +25,7 @@ const CurrencyTable = () => {
   };
 
   const calculateCurrencyRate = (cur) => {
-    return Math.round((1 / cur) * 1000) / 1000;
+    return (Math.round((1 / cur) * 1000) / 1000).toString();
   };
 
   const renderCurrencyData = () => {
