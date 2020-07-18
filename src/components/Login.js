@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import UserContext from "../context/UserContext";
-import axios from "axios";
+import axiosPublic from "../utils/axiosPublic";
+import setToken from "../utils/setToken";
 import "./Login.css";
 import Background from "../assets/bg.svg";
 import Avatar from "../assets/user.svg";
 import Await from "./Await";
-import { url } from "../url";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,16 +21,12 @@ const Login = () => {
     if (isLoggedIn || isLoggedInState) return;
     try {
       setIsLoading(true);
-      const response = await axios.post(url + "/login", {
-        email,
-        password,
-      });
+      const response = await axiosPublic.post("/login", { email, password });
       if (!response.data.success) throw new Error("Could not logged in");
       const { data } = response.data;
       const user = Object.assign({}, data.user);
       const token = user.tokens[user.tokens.length - 1].token;
-      const time = new Date().getTime() + 1000 * 36000;
-      document.cookie = `token=${token};expires=${time.toString()};secure`;
+      setToken(token);
       delete user.createdAt;
       delete user.updatedAt;
       login({ ...user });

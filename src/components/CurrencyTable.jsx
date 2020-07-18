@@ -1,8 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import Axios from "axios";
+import axios from "../utils/axios";
 import FavoriteContext from "../context/FavoriteContext";
 import "./CurrencyTable.css";
-import { url } from "../url";
 
 const CurrencyTable = () => {
   const { currencyData, fetchFavorite } = useContext(FavoriteContext);
@@ -18,16 +17,7 @@ const CurrencyTable = () => {
 
   const hadleFetchingCurrencyData = async () => {
     try {
-      let token;
-      document.cookie.split("; ").forEach((cookie) => {
-        if (cookie.startsWith("token")) {
-          token = cookie.split("=")[1];
-        }
-      });
-      if (!token) throw new Error();
-      const response = await Axios.get(url + "/favorites/currency", {
-        headers: { Authorization: `bearer ${token}` },
-      });
+      const response = await axios.get("/favorites/currency");
       if (response.status !== 200) throw new Error();
       const rates = response.data.data.rates;
       fetchFavorite("currencyData", rates);

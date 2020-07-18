@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
 import UserContext from "../context/UserContext";
-import axios from "axios";
+import axiosPublic from "../utils/axiosPublic";
+import setToken from "../utils/setToken";
 import "./Login.css";
 import Background from "../assets/bg.svg";
 import Avatar from "../assets/user.svg";
 import Await from "./Await";
-import { url } from "../url";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -21,7 +21,7 @@ const Signup = () => {
   const submitForm = async () => {
     try {
       setIsLoading(true);
-      const response = await axios.post(url + "/signup", {
+      const response = await axiosPublic.post("/signup", {
         username,
         email,
         password,
@@ -32,8 +32,7 @@ const Signup = () => {
       const { data } = response.data;
       const user = Object.assign({}, data.user);
       const token = user.tokens.token;
-      const time = new Date().getTime() + 1000 * 36000;
-      document.cookie = `token=${token};expires=${time.toString()}`;
+      setToken(token);
       delete user.createdAt;
       delete user.updatedAt;
       signup({ ...user });

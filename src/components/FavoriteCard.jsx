@@ -1,12 +1,11 @@
 import React, { useContext, useState, useEffect } from "react";
 import FavoriteContext from "../context/FavoriteContext";
-import Axios from "axios";
+import axios from "../utils/axios";
 import CurrencyLogo from "../assets/currency.svg";
 import NewsLogo from "../assets/news.svg";
 import PlusIcon from "../assets/plus.svg";
 import MinusIcon from "../assets/minus.svg";
 import "./FavoriteCard.css";
-import { url } from "../url";
 
 const FavoriteCard = ({ typeProp }) => {
   const [type, setType] = useState(typeProp);
@@ -25,29 +24,16 @@ const FavoriteCard = ({ typeProp }) => {
 
   const handleFavoriteProcesses = async () => {
     try {
-      let token;
-      document.cookie.split("; ").forEach((cookie) => {
-        if (cookie.startsWith("token")) {
-          token = cookie.split("=")[1];
-        }
-      });
-      if (!token) throw new Error();
       if (favoritesState[type]) {
-        const response = await Axios.get(
-          `${url}/favorites/${type.toLowerCase()}/deactivate`,
-          {
-            headers: { Authorization: `bearer ${token}` },
-          }
+        const response = await axios.get(
+          `/favorites/${type.toLowerCase()}/deactivate`
         );
         if (response.status !== 200) throw new Error();
         setFavoritesState[type] = false;
         removeFavorite(type.toLowerCase());
       } else {
-        const response = await Axios.get(
-          `${url}/favorites/${type.toLowerCase()}/activate`,
-          {
-            headers: { Authorization: `bearer ${token}` },
-          }
+        const response = await axios.get(
+          `/favorites/${type.toLowerCase()}/activate`
         );
         if (response.status !== 200) throw new Error();
         setFavoritesState[type] = true;

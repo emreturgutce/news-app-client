@@ -7,44 +7,33 @@ import Signup from "./components/Signup";
 import NotFound from "./components/NotFound";
 import PrivateRoute from "./components/PrivateRoute";
 import Await from "./components/Await";
-import Axios from "axios";
 import UserContext from "./context/UserContext";
 import FavoriteProvider from "./context/FavoriteProvider";
-import { url } from "./url";
+import axios from "./utils/axios";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   const { setUser } = useContext(UserContext);
 
+  useEffect(() => {
+    getUser();
+  }, []);
+
   const getUser = async () => {
     try {
-      let token;
-      document.cookie.split("; ").forEach((cookie) => {
-        if (cookie.startsWith("token")) {
-          token = cookie.split("=")[1];
-        }
-      });
-      if (!token) throw new Error();
-      const response = await Axios.get(url + "/me", {
-        headers: {
-          Authorization: `bearer ${token}`,
-        },
-      });
+      const response = await axios.get("/me");
       const data = response.data;
-      if (!data.success) throw new Error();
+      if (!data.success) throw new Error("Not successful");
       const user = Object.assign({}, data);
       delete user.createdAt;
       delete user.updatedAt;
       setUser(user);
       setLoading(false);
     } catch (error) {
+      console.log(error);
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    getUser();
-  }, []);
 
   return (
     <div className="App">

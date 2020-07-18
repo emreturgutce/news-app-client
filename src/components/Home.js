@@ -5,8 +5,7 @@ import FavoriteContainer from "./FavoriteContainer";
 import CurrencyTable from "./CurrencyTable";
 import NewsContainer from "./NewsContainer";
 import FavoriteContext from "../context/FavoriteContext";
-import Axios from "axios";
-import { url } from "../url";
+import axios from "../utils/axios";
 
 const Home = () => {
   const { favorites, addFavorite } = useContext(FavoriteContext);
@@ -23,34 +22,22 @@ const Home = () => {
 
   useEffect(() => {
     setCurrencyState(favorites.currency);
-  }, [favorites]);
+  }, [favorites.currency]);
 
   useEffect(() => {
     setNewsState(favorites.news);
-  }, [favorites]);
+  }, [favorites.news]);
 
   const getFavoritesInfo = async () => {
     try {
-      let token;
-      document.cookie.split("; ").forEach((cookie) => {
-        if (cookie.startsWith("token")) {
-          token = cookie.split("=")[1];
-        }
-      });
-      if (!token) throw new Error();
-      const response = await Axios.get(url + "/favorites", {
-        headers: {
-          Authorization: `bearer ${token}`,
-        },
-      });
-      const currencyStatus = response.data.data.favorites.currency;
-      const newsStatus = response.data.data.favorites.news;
-      if (currencyStatus && newsStatus) {
+      const response = await axios.get("/favorites");
+      const { currency, news } = response.data.data.favorites;
+      if (currency && news) {
         addFavorite("news");
         addFavorite("currency");
-      } else if (newsStatus) {
+      } else if (news) {
         addFavorite("news");
-      } else if (currencyStatus) {
+      } else if (currency) {
         addFavorite("currency");
       }
     } catch (error) {}
