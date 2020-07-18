@@ -5,6 +5,5 @@ export default function () {
       token = cookie.split("=")[1];
     }
   });
-  if (!token) throw new Error("Token could not found");
   return token;
 }
