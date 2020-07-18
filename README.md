@@ -7,7 +7,9 @@ Created using **React** and **Node.js**
 
 #### Live Demo
 
-You can try this app [here](http://favorite-news-app.surge.sh/)
+You can try this app in the links down below  
+[Netlify (ssh/tls)](http://favorite-news-app.netlify.com/)  
+[Surge.sh](http://favorite-news-app.surge.sh/)
 
 #### Rest Api Repository
 
