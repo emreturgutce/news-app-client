@@ -1,7 +1,5 @@
 ## Fullstack News App
 
----
-
 This app created for those who want to learn foreign currency and latest news.
 Created using **React** and **Node.js**
 
